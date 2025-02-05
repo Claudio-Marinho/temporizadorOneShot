@@ -52,3 +52,6 @@ target_link_libraries(temporizadorOneShot
 target_include_directories(temporizadorOneShot PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
 )
+
+# Add any user requested libraries
+target_link_libraries(temporizadorOneShot)
