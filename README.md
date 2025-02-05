@@ -72,11 +72,3 @@ O código principal está no arquivo temporizadorOneShot.c e segue o seguinte fl
 Arquivo: diagram.json
 
 Define a simulação no Wokwi, com os componentes corretamente conectados.
-⚡ Debug e Erros Comuns
-
-Se algo der errado, verifique: ✅ O Pico SDK está corretamente configurado?
-✅ O código compilou sem erros?
-✅ O arquivo .uf2 foi enviado corretamente para o Raspberry Pi Pico W?
-✅ O simulador Wokwi está rodando corretamente?
-
-Caso tenha dúvidas, abra uma issue no repositório ou me chame! 🚀
