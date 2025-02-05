@@ -16,7 +16,7 @@
         "id": "btn1",
         "top": 25.4,
         "left": -76.8,
-        "attrs": { "color": "black" }
+        "attrs": { "color": "black", "pull": "down" }
       },
       {
         "type": "wokwi-led",

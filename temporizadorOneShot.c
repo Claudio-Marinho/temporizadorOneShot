@@ -3,9 +3,9 @@
 #include "hardware/timer.h"
 #include "pico/bootrom.h"
 
-#define LED_RED 13
-#define LED_GREEN 11
-#define LED_BLUE 12
+#define LED_RED 11
+#define LED_GREEN 12
+#define LED_BLUE 13
 #define BTN_A 5
 #define DEBOUNCE_TIME 200000  // 200ms de debounce
 
@@ -14,19 +14,24 @@ volatile uint32_t last_time = 0;
 volatile bool alarme_ativado = false;
 
 int64_t alarm_callback(alarm_id_t id, void *user_data) {
+    // Desliga todos antes de mudar
+    gpio_put(LED_RED, false);
+    gpio_put(LED_BLUE, false);
+    gpio_put(LED_GREEN, false);
+
     if (led_atual == 1) {
-        gpio_put(LED_RED, false);
-        add_alarm_in_ms(3000, alarm_callback, NULL, false);
+        gpio_put(LED_RED, true);
     } else if (led_atual == 2) {
-        gpio_put(LED_BLUE, false);
-        add_alarm_in_ms(3000, alarm_callback, NULL, false);
+        gpio_put(LED_BLUE, true);
     } else if (led_atual == 3) {
-        gpio_put(LED_GREEN, false);
-        led_atual = 1;
+        gpio_put(LED_GREEN, true);
+        led_atual = 0; // Reinicia ciclo
         alarme_ativado = false;
         return 0;
     }
+    
     led_atual++;
+    add_alarm_in_ms(3000, alarm_callback, NULL, false);
     return 0;
 }
 
